@@ -11,5 +11,6 @@
 
 ** Build do app
 * Entrar no diretório bin
-* Executar o comando `go build main.go`, será gerado o main.exe que é só executar.
+* Executar o comando `go build main.go`, será gerado o main.exe.
+* Execute o main.exe via cmd `main`
 * Acesse a url localhost:8000 pelo seu navegador favorito, e pronto, app em execução ;) 
