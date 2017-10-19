@@ -1,5 +1,5 @@
-#Transparency
-##Sistema de consulta de instituições de ensino
+*Transparency*
+**Sistema de consulta de instituições de ensino**
 
-###Pacotes de terceiros 
+***Pacotes de terceiros*** 
 go get github.com/lib/pq
