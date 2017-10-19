@@ -37,7 +37,7 @@
                         <th>insturl</th>
                     </tr>
                 </thead> 
-                <tbody>
+                <tbody id="tbl_content">
                     <tr>
                         <td colspan="7">Nenhuma procura realizada, favor informe os parametros e clique em procurar.</td>
                     </tr>
@@ -50,6 +50,8 @@
 
     <script>
         var $btn_search  = $('#btn_search');
+
+        var $tbl_content = $('#tbl_content');
 
         $btn_search.on('click', handler_search);
 
@@ -66,7 +68,9 @@
         };
 
         function done_search(data) {
-            console.log(data);
+            $tbl_content.fadeOut(2000, function(){
+                $tbl_content.html(data).fadeIn(2000);
+            });
         };
 
         function fail_search(error) {

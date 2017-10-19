@@ -1,11 +1,18 @@
-{{range .}}
+{{$length := len .}}
+{{if eq $length 0}}
 <tr>
-    <td>{{.Unitid}}</td>
-    <td>{{.opeid}}</td>
-    <td>{{.opeid6}}</td>
-    <td>{{.instnm}}</td>
-    <td>{{.city}}</td>
-    <td>{{.stabbr}}</td>
-    <td>{{.insturl}}</td>
+    <td colspan="7">Nada encontrado.</td>
 </tr>
+{{else}}
+    {{range .}}
+    <tr>
+        <td>{{.Unitid}}</td>
+        <td>{{.Opeid}}</td>
+        <td>{{.Opeid6}}</td>
+        <td>{{.Instnm}}</td>
+        <td>{{.City}}</td>
+        <td>{{.Stabbr}}</td>
+        <td>{{.Insturl}}</td>
+    </tr>
+    {{end}}
 {{end}}
