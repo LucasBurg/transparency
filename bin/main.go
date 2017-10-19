@@ -10,36 +10,42 @@ import (
 )
 
 type Scorecard struct {
-	unitid string
-	opeid string
-	opeid6 string
-	instnm string
-	city string
-	stabbr string
-	insturl string
+	Unitid string
+	Opeid string
+	Opeid6 string
+	Instnm string
+	City string
+	Stabbr string
+	Insturl string
 }
 
-var rows_scorecard []Scorecard
+
 
 func listScorecard(sct_column_search string, txt_search string) []Scorecard {
 	db, err := sql.Open("postgres", "user=postgres dbname=transparency password=99253164 sslmode=disable")
 	if err != nil {
 		log.Fatal("Error: parametros invalidos para a conexão com o database")
 	}
-	query := fmt.Sprintf("select unitid from scorecard where %s = '%s' order by stabbr, city, instnm asc limit 100", sct_column_search, txt_search)
-	//fmt.Println(query)
+	query := fmt.Sprintf("select unitid, opeid, opeid6, instnm, city, stabbr, insturl from scorecard where %s = '%s' order by stabbr, city, instnm asc limit 100", sct_column_search, txt_search)
 	rows, err := db.Query(query)
 	if err != nil {
 	  log.Fatal(err)
 	}
+	defer rows.Close()
+
+	rows_scorecard := []
+
 	for rows.Next() {
-
-		//fmt.Println(rows_scorecard)
-
-		var s Scorecard
-		err = rows.Scan(&s)
+		s := Scorecard{}
+		err = rows.Scan(&s.Unitid, &s.Opeid, &s.Opeid6, &s.Instnm, &s.City, &s.Stabbr, &s.Insturl)
 		
-		fmt.Println(err)
+		
+		
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		log.Println(s)
 
 		rows_scorecard = append(rows_scorecard, s)
 	}
