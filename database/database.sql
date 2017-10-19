@@ -36,6 +36,6 @@ ALTER TABLE public.scorecard
  * Copia os dados do arquivo preparado para 7 colunas sem o cabeçalho.
  * IMPORTANTE: substituir o diretorio informado pelo diretorio atual da sua máquina.
  */
-copy scorecard 
-from 'D:\projetos\Apenas7colunas2SemCabecaco2.csv' 
-with delimiter ';'
+COPY public.scorecard 
+FROM 'D:\projetos\Apenas7colunas2SemCabecaco2.csv' 
+WITH delimiter ';'
